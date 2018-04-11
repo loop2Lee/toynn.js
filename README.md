@@ -36,7 +36,11 @@ Last, predict
   nn.predict(test_data_input[i]); //returns predict output
 ```
 
-In this repository, I included a few examples:
+Examples
+-------------
 - Iris (only this for now)
+
+From Me
+-------------
 Try it yourself and have fun.
 Zimo Xiao, inspired by The Coding Train.
