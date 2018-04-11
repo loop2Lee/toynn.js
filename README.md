@@ -1,6 +1,6 @@
 toynn.js
 -------------
-An simple **JavaScript** implementation of a basic Neural Network.
+A simple **JavaScript** implementation of a basic Neural Network.
 
 Basic Usage
 -------------
