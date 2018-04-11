@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="matrix.js"></script>
+  <script src="toynn.js"></script>
+	<script src="iris.js"></script>
+	<script>
+
+		function shuffle(array) {
+			var currentIndex = array.length, temporaryValue, randomIndex;
+			while (0 !== currentIndex) {
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex -= 1;
+				temporaryValue = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = temporaryValue;
+			}
+			return array;
+		}
+
+		iris = shuffle(iris);	//shuffle array
+
+		var iris_input = [];
+
+		var iris_target = [];
+
+		for(var i=0;i<iris.length;i++){
+			//separate input and label
+			iris_input.push([iris[i]['sepalLength'],iris[i]['sepalWidth'],iris[i]['petalLength'],iris[i]['petalWidth']]);
+			iris_target.push([iris[i]['species']]);
+		}
+
+		var train_data_input = iris_input.slice(iris.length/2);
+
+		var train_data_target = iris_target.slice(iris.length/2);
+
+		var test_data_input = iris_input.slice((iris.length/2),(iris.length));
+
+		var test_data_target = iris_target.slice((iris.length/2),(iris.length));
+
+		var nn = new toynn(4, [3,3], 1, 1, 'sigmoid');	//initial nn with 4 inputs, 2 layers and 1 output
+
+		for (var j=0;j<30;j++){
+			//train for 30 times
+			for(var i=0;i<train_data_input.length;i++){
+				if(typeof(train_data_target[i])!="undefined" && typeof(train_data_input[i])!="undefined"){
+					//validator
+					nn.train(train_data_input[i],train_data_target[i]);	//train
+				}
+			}
+		}
+
+		for(var i=0;i<test_data_input.length;i++){
+			if(typeof(test_data_input[i])!="undefined" && typeof(test_data_target[i])!="undefined"){
+				console.log([nn.predict(test_data_input[i]),test_data_target[i]]);
+			}
+		}
+	</script>
+</head>
+<body></body>
+</html>
