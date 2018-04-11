@@ -13,7 +13,7 @@ First, import **matrix.js** and **toynn.js** with the following HTML tags
 
 Then, initialize a Neural Network with:
   - four inputs
-  - two hidden layers layers (both have three nodes)
+  - two hidden layers (both have three nodes)
   - one outputs
   - learning rate sets to 1
   - using sigmoid (now supports sigmoid and tanh) as activation function
